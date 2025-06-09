@@ -1,0 +1,611 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reglamento de Telecomunicaciones - Capítulo II</title>
+    <link rel="manifest" href="/manifest.json"> <!-- Enlace al archivo manifest.json -->
+    <meta name="theme-color" content="#1a73e8"> <!-- Color del tema para la barra del navegador -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f3f4f6;
+            color: #333;
+            line-height: 1.6;
+        }
+        .container {
+            max-width: 1000px;
+            margin: 2rem auto;
+            padding: 1.5rem;
+            background-color: #ffffff;
+            border-radius: 0.75rem;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        .header {
+            background-color: #1a73e8;
+            color: white;
+            padding: 1.5rem;
+            border-radius: 0.75rem 0.75rem 0 0;
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+        .section-title {
+            font-size: 1.75rem;
+            font-weight: bold;
+            color: #1a73e8;
+            margin-bottom: 1.5rem;
+            border-bottom: 2px solid #e0e0e0;
+            padding-bottom: 0.5rem;
+        }
+        .article-title {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #333;
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+        }
+        .question-container {
+            background-color: #e3f2fd;
+            border-left: 5px solid #2196f3;
+            padding: 1rem;
+            border-radius: 0.5rem;
+            margin-bottom: 1rem;
+        }
+        .question-text {
+            font-weight: bold;
+            cursor: pointer;
+            color: #1976d2;
+        }
+        .answer-text {
+            margin-top: 0.5rem;
+            padding-top: 0.5rem;
+            border-top: 1px dashed #90caf9;
+            color: #333;
+            display: none; /* Hidden by default */
+        }
+        .case-study-container {
+            background-color: #e8f5e9;
+            border-left: 5px solid #4caf50;
+            padding: 1rem;
+            border-radius: 0.5rem;
+            margin-bottom: 1rem;
+        }
+        .case-study-title {
+            font-weight: bold;
+            color: #2e7d32;
+        }
+        .quiz-option {
+            background-color: #f0f4f8;
+            padding: 0.75rem;
+            border-radius: 0.5rem;
+            margin-bottom: 0.75rem;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        .quiz-option:hover {
+            background-color: #e0e7ed;
+        }
+        .quiz-option.selected {
+            background-color: #c5e1a5; /* Light green for selected */
+        }
+        .quiz-option.correct {
+            background-color: #81c784; /* Green for correct */
+            border: 1px solid #4caf50;
+        }
+        .quiz-option.incorrect {
+            background-color: #ef9a9a; /* Red for incorrect */
+            border: 1px solid #f44336;
+        }
+        .quiz-result {
+            margin-top: 1rem;
+            font-weight: bold;
+            text-align: center;
+        }
+        .quiz-feedback {
+            margin-top: 0.5rem;
+            padding-left: 1rem;
+            border-left: 3px solid #ffeb3b;
+            color: #555;
+            display: none;
+        }
+        .nav-button {
+            padding: 0.75rem 1.5rem;
+            background-color: #1a73e8;
+            color: white;
+            border-radius: 0.5rem;
+            text-decoration: none;
+            transition: background-color 0.3s ease;
+            display: inline-block;
+            margin-right: 0.5rem;
+        }
+        .nav-button:hover {
+            background-color: #1558b0;
+        }
+        .fixed-index {
+            position: sticky;
+            top: 1rem;
+            width: 250px;
+            float: left;
+            margin-right: 2rem;
+            background-color: #f9fafb;
+            padding: 1rem;
+            border-radius: 0.75rem;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+            max-height: calc(100vh - 4rem);
+            overflow-y: auto;
+        }
+        .fixed-index ul {
+            list-style: none;
+            padding: 0;
+        }
+        .fixed-index li a {
+            display: block;
+            padding: 0.5rem 0;
+            color: #3b82f6;
+            text-decoration: none;
+            transition: color 0.2s ease;
+        }
+        .fixed-index li a:hover {
+            color: #1d4ed8;
+        }
+        .content-area {
+            margin-left: 270px; /* Adjust based on index width + margin */
+        }
+        @media (max-width: 768px) {
+            .fixed-index {
+                position: static;
+                width: 100%;
+                float: none;
+                margin-right: 0;
+                margin-bottom: 1.5rem;
+                max-height: none;
+            }
+            .content-area {
+                margin-left: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1 class="text-3xl font-bold">Reglamento de Telecomunicaciones</h1>
+            <p class="text-xl">Capítulo II: Infraestructura Común de Telecomunicaciones (ICT)</p>
+        </div>
+
+        <div class="fixed-index">
+            <h2 class="text-xl font-bold mb-4 text-blue-700">Índice</h2>
+            <ul>
+                <li><a href="#articulo4">Artículo 4: Normativa Técnica Aplicable</a></li>
+                <li><a href="#articulo5">Artículo 5: Obligaciones y Facultades</a></li>
+                <li><a href="#articulo6">Artículo 6: Adaptación e Instalaciones Individuales</a></li>
+                <li><a href="#articulo7">Artículo 7: Continuidad de Servicios</a></li>
+                <li><a href="#articulo8">Artículo 8: Consulta e Intercambio de Información</a></li>
+                <li><a href="#articulo9">Artículo 9: Proyecto Técnico</a></li>
+                <li><a href="#articulo10">Artículo 10: Ejecución del Proyecto Técnico</a></li>
+                <li><a href="#articulo11">Artículo 11: Equipos y Materiales</a></li>
+                <li><a href="#articulo12">Artículo 12: Colaboración con la Administración</a></li>
+                <li><a href="#articulo13">Artículo 13: Conservación e Inspección</a></li>
+                <li><a href="#articulo14">Artículo 14: Hogar Digital</a></li>
+                <li><a href="#articulo15">Artículo 15: Régimen Sancionador</a></li>
+                <li><a href="#autoevaluacion">Autoevaluación</a></li>
+            </ul>
+        </div>
+
+        <div class="content-area">
+            <section id="articulo4">
+                <h2 class="article-title">Artículo 4. Normativa técnica aplicable.</h2>
+                <p>1. A la infraestructura común de telecomunicaciones para el acceso a los servicios de telecomunicación le será de aplicación la normativa técnica que se relaciona a continuación:</p>
+                <p>a) Lo dispuesto en el anexo I de este reglamento, a la destinada a la captación, adaptación y distribución de las señales de radiodifusión sonora y televisión.</p>
+                <p>b) Lo establecido en el anexo II, a la que tiene por objeto permitir el acceso a los servicios de telefonía disponible al público y de telecomunicaciones de banda ancha.</p>
+                <p>c) A la de obra civil que soporte las demás infraestructuras comunes, lo dispuesto en la norma técnica básica de edificación que le sea de aplicación, en la que se recogerán necesariamente las especificaciones técnicas mínimas de las edificaciones en materia de telecomunicaciones, incluidas como anexo III de este reglamento.</p>
+                <p>En ausencia de norma técnica básica de edificación, las infraestructuras de obra civil deberán cumplir, en todo caso, las especificaciones del anexo III.</p>
+                <p>2. Lo dispuesto en el párrafo c) del apartado anterior se entenderá sin perjuicio de las competencias que, sobre la materia, tengan atribuidas otras Administraciones públicas.</p>
+
+                <div class="section-title mt-8 mb-4">Preguntas de Comprensión</div>
+                <div class="question-container">
+                    <div class="question-text" onclick="toggleAnswer(this)">¿Qué normativas técnicas son aplicables a las ICT según el Artículo 4?</div>
+                    <div class="answer-text">Las normativas aplicables incluyen el anexo I para radiodifusión sonora y TV, el anexo II para telefonía y banda ancha, y el anexo III para la obra civil que soporta las infraestructuras, además de la norma técnica básica de edificación.</div>
+                </div>
+                <div class="question-container">
+                    <div class="question-text" onclick="toggleAnswer(this)">¿Qué sucede si no existe una norma técnica básica de edificación para las infraestructuras de obra civil?</div>
+                    <div class="answer-text">En ese caso, las infraestructuras de obra civil deberán cumplir, en todo caso, las especificaciones del anexo III de este reglamento.</div>
+                </div>
+
+                <div class="section-title mt-8 mb-4">Caso Práctico</div>
+                <div class="case-study-container">
+                    <div class="case-study-title">Caso Práctico 1: Edificio sin Norma Técnica Específica</div>
+                    <p><strong>Situación:</strong> Una nueva edificación se está construyendo en una localidad donde no existe una norma técnica básica de edificación específica para las infraestructuras de obra civil de telecomunicaciones.</p>
+                    <p><strong>Pregunta:</strong> ¿Qué debe hacer el promotor para asegurar que las infraestructuras de obra civil cumplan con la normativa?</p>
+                    <p><strong>Respuesta:</strong> El promotor deberá asegurar que la obra civil cumpla con las especificaciones del anexo III del reglamento de telecomunicaciones, el cual detalla las características mínimas para este tipo de infraestructuras.</p>
+                </div>
+            </section>
+
+            <section id="articulo5">
+                <h2 class="article-title">Artículo 5. Obligaciones y facultades de los operadores y de la propiedad.</h2>
+                <p>1. Con carácter general, los operadores de redes y servicios de telecomunicación estarán obligados a la utilización de la infraestructura en las condiciones previstas en este reglamento y garantizarán, hasta el punto de terminación de red, el secreto de las comunicaciones, la calidad del servicio que les fuere exigible y el mantenimiento de la infraestructura.</p>
+                <p>2. Sin perjuicio de lo dispuesto en el artículo 5 del Real Decreto-ley 1/1998, de 27 de febrero, sobre infraestructuras comunes en los edificios para el acceso a los servicios de telecomunicación, el propietario o los propietarios de la edificación serán los responsables del mantenimiento de la parte de infraestructura común comprendida entre el punto de terminación de red y el punto de acceso al usuario, así como de tomar las medidas necesarias para evitar el acceso no autorizado y la manipulación incorrecta de la infraestructura. No obstante, los operadores y los usuarios podrán acordar voluntariamente la instalación en el punto de acceso al usuario, de un dispositivo que permita, en caso de avería, determinar el tramo de la red en el que dicha avería se produce.</p>
+                <p>3.1 Si fuera necesaria la instalación de equipos propiedad de los operadores para la introducción de las señales de telefonía o de telecomunicaciones de banda ancha en la infraestructura, aquéllos estarán obligados a sufragar todos los gastos que originen tanto la instalación y el mantenimiento de los equipos, como la operación de éstos y su retirada.</p>
+                <p>3.2 Asimismo, será obligación de los operadores que utilizan sistemas de cables de fibra óptica o coaxiales para proporcionar servicios de telefonía disponible al público o de telecomunicaciones de banda ancha, el suministro a los usuarios finales de los equipos de terminación de red que, en su caso, sean necesarios para hacer compatibles las interfaces de acceso disponibles al público con las de la red utilizada para prestar los servicios.</p>
+                <p>4. Los operadores de los servicios de telecomunicaciones procederán a la retirada del cableado y demás elementos que, discurriendo por la infraestructura de canalizaciones recintos y registros que soportan la ICT de la edificación, hubieran instalado, en su día, para dar servicio a un abonado cuando concluya, por cualquier causa, el correspondiente contrato de abono. La retirada será efectuada en un plazo no superior a 30 días, a partir de la conclusión del contrato. Transcurrido dicho plazo sin que se haya retirado el cable y demás elementos, quedará facultada la propiedad de la edificación para efectuarla por su cuenta, o para considerar integrados los mismos en la ICT de la edificación.</p>
+                <p>5. De acuerdo con lo dispuesto en el artículo 9.1 del Real Decreto-ley 1/1998, de 27 de febrero, sobre infraestructuras comunes en los edificios para el acceso a los servicios de telecomunicación, los copropietarios de un edificio en régimen de propiedad horizontal o, en su caso, los arrendatarios tendrán derecho a acceder, a su costa, a los servicios de telecomunicaciones distintos de los indicados en el artículo 2.1 de este reglamento a través de sistemas individuales de acceso a los servicios de telecomunicación cuando no exista infraestructura común de acceso a los servicios de telecomunicaciones, no se instale una nueva o no se adapte la preexistente, todo ello con arreglo al procedimiento dispuesto en el artículo 9.2 del mencionado Real Decreto-ley 1/1998.</p>
+
+                <div class="section-title mt-8 mb-4">Preguntas de Comprensión</div>
+                <div class="question-container">
+                    <div class="question-text" onclick="toggleAnswer(this)">¿Cuáles son las obligaciones generales de los operadores de telecomunicaciones?</div>
+                    <div class="answer-text">Deben utilizar la infraestructura según el reglamento, garantizar el secreto y la calidad del servicio hasta el punto de terminación de red, y mantener la infraestructura.</div>
+                </div>
+                <div class="question-container">
+                    <div class="question-text" onclick="toggleAnswer(this)">¿Quién es el responsable del mantenimiento de la ICT entre el punto de terminación de red y el punto de acceso al usuario?</div>
+                    <div class="answer-text">El propietario o los propietarios de la edificación son los responsables de este mantenimiento.</div>
+                </div>
+                <div class="question-container">
+                    <div class="question-text" onclick="toggleAnswer(this)">¿Qué sucede si un operador no retira su cableado de una ICT tras la finalización de un contrato?</div>
+                    <div class="answer-text">La propiedad de la edificación queda facultada para retirarlo por su cuenta o para considerar los elementos integrados en la ICT de la edificación, transcurridos 30 días.</div>
+                </div>
+
+                <div class="section-title mt-8 mb-4">Caso Práctico</div>
+                <div class="case-study-container">
+                    <div class="case-study-title">Caso Práctico 2: Retirada de Cableado</div>
+                    <p><strong>Situación:</strong> Un inquilino en un edificio de apartamentos da de baja su servicio de internet con el operador X. Han pasado 45 días y el operador X no ha retirado el cableado de fibra óptica de la ICT del edificio.</p>
+                    <p><strong>Pregunta:</strong> ¿Qué acciones puede tomar la comunidad de propietarios respecto al cableado?</p>
+                    <p><strong>Respuesta:</strong> La comunidad de propietarios está facultada para retirar el cableado por su cuenta, o para considerar que dicho cableado y demás elementos se han integrado en la ICT del edificio, ya que el plazo de 30 días para la retirada ha expirado.</p>
+                </div>
+            </section>
+
+            <section id="articulo6">
+                <h2 class="article-title">Artículo 6. Adaptación de instalaciones existentes y realización de instalaciones individuales.</h2>
+                <p>1. La adaptación de las instalaciones individuales o de las infraestructuras preexistentes cuando, de acuerdo con la legislación vigente, no reúnan las condiciones para soportar una infraestructura común de telecomunicaciones o no exista obligación de instalarla se realizará de conformidad con los anexos referidos en los párrafos a) y b) del artículo 4.1 de este reglamento que les sean de aplicación.</p>
+                <p>2. En el caso de que por no existir, o no estar prevista, la instalación de una infraestructura común de telecomunicaciones, o no se adaptase la preexistente, sea necesaria la realización de una instalación individual para acceder a un servicio de telecomunicación, el promotor de dicha instalación estará obligado a comunicar por escrito al propietario o, en su caso, a la comunidad de propietarios del edificio su intención, y acompañará a dicha comunicación la documentación suficiente para describir la instalación que pretende realizar, acreditación de que ésta reúne los requisitos legales que le sean de aplicación y detalle del uso pretendido de los elementos comunes del edificio. Asimismo incluirá una declaración expresa por la que se exima al propietario o, en su caso, a la comunidad de propietarios de obligación alguna relativa al mantenimiento, seguridad y vigilancia de la infraestructura que se pretende realizar. El propietario o, en su caso, la comunidad de propietarios contestará en los plazos previstos en el Real Decreto-ley 1/1998, de 27 de febrero, si tiene previsto acometer la realización de una infraestructura común o la adaptación de la preexistente que proporcione el acceso al servicio de telecomunicación pretendido y, en caso contrario, prestará su consentimiento a la utilización de los elementos comunes del edificio para proceder a la realización de la instalación individual, y podrá proponer soluciones alternativas, siempre y cuando sean viables técnica y económicamente.</p>
+
+                <div class="section-title mt-8 mb-4">Preguntas de Comprensión</div>
+                <div class="question-container">
+                    <div class="question-text" onclick="toggleAnswer(this)">¿Cuándo se puede realizar una instalación individual si no hay ICT o no se adapta la preexistente?</div>
+                    <div class="answer-text">Sí, es posible, pero el promotor de la instalación individual debe comunicar por escrito al propietario o comunidad de propietarios su intención, incluyendo la descripción de la instalación y eximiéndolos de responsabilidad.</div>
+                </div>
+                <div class="question-container">
+                    <div class="question-text" onclick="toggleAnswer(this)">¿Qué debe incluir la comunicación de una instalación individual a la comunidad de propietarios?</div>
+                    <div class="answer-text">Debe incluir la descripción de la instalación, acreditación de cumplimiento legal, detalle del uso de elementos comunes y una declaración que exima a la propiedad de mantenimiento y seguridad.</div>
+                </div>
+            </section>
+
+            <section id="articulo7">
+                <h2 class="article-title">Artículo 7. Continuidad de los servicios.</h2>
+                <p>1. Con la finalidad de garantizar la continuidad de los servicios, con carácter previo a la modificación de las instalaciones existentes o a su sustitución por una nueva infraestructura, la comunidad de propietarios o el propietario de la edificación estarán obligados a efectuar una consulta por escrito a los titulares de dichas instalaciones y, en su caso, a los arrendatarios, para que declaren, por escrito, los servicios recibidos a través de aquéllas, al objeto de que se garantice que con la instalación modificada o con la infraestructura que sustituye a la existente sea posible la recepción de todos los servicios declarados. Dicha consulta se efectuará en el plazo de dos meses, de acuerdo con lo indicado en el Real Decreto-ley 1/1998, de 27 de febrero, para la instalación de la infraestructura en los edificios ya construidos.</p>
+                <p>2. Asimismo, la propiedad tomará las medidas oportunas tendentes a asegurar la normal utilización de las instalaciones o infraestructuras existentes, hasta que se encuentre en perfecto estado de funcionamiento la instalación modificada o la nueva infraestructura.</p>
+
+                <div class="section-title mt-8 mb-4">Preguntas de Comprensión</div>
+                <div class="question-container">
+                    <div class="question-text" onclick="toggleAnswer(this)">¿Qué debe hacer la propiedad antes de modificar una ICT existente para garantizar la continuidad de los servicios?</div>
+                    <div class="answer-text">Debe consultar por escrito a los titulares de las instalaciones y arrendatarios para que declaren los servicios recibidos, asegurando que la nueva instalación permita la recepción de todos los servicios declarados.</div>
+                </div>
+            </section>
+
+            <section id="articulo8">
+                <h2 class="article-title">Artículo 8. Consulta e intercambio de información entre el proyectista de la ICT y los diferentes operadores de telecomunicación.</h2>
+                <p>1. Por orden del Ministro de Industria, Turismo y Comercio, previo acuerdo de la Comisión Delegada del Gobierno para Asuntos Económicos, se podrá regular un procedimiento de consulta e intercambio de información entre los proyectistas de las ICT y los operadores de telecomunicaciones que desplieguen red en la zona en la que se va a construir la edificación, con la finalidad de:</p>
+                <p>a) Posibilitar que las infraestructuras de telecomunicación que deben incorporarse a dichas edificaciones permitan que la oferta de servicios de telecomunicación dirigida a los usuarios finales, en régimen de libre competencia, sea lo más amplia posible. Así, la consulta del proyectista de la ICT hacia los operadores de telecomunicación pertinentes en la zona donde se va a construir la edificación, incluirá una pregunta relativa a los tipos de redes que formando parte del proyecto técnico original de la ICT, no tienen previsto utilizar para proporcionar servicios de telecomunicación a sus potenciales usuarios. De este modo, bajo criterios de eficiencia económica y técnica y de previsión de futuro, y en función de las respuestas a la consulta, sólo se incorporarán a la ICT de la edificación las redes que realmente vayan a tener utilidad, por haber operadores de telecomunicación en la zona interesados en utilizar dichas redes para ofrecer y proporcionar servicios a los usuarios.</p>
+                <p>b) Confirmar la ubicación más idónea de la arqueta de entrada de la ICT.</p>
+                <p>El resultado de la consulta e intercambio de información entre proyectistas y operadores se aplicará solamente para la ejecución o no de la instalación inicial de las diversas redes interiores de la infraestructura común, en los términos establecidos en este reglamento y sus anexos, sin que dicho resultado afecte al diseño, al dimensionado ni a la instalación de los diferentes elementos soporte de obra civil de la infraestructura común, con excepción de la determinación de la ubicación de la arqueta de entrada.</p>
+                <p>2. A efectos de lo prescrito en el apartado anterior, se entenderá lo siguiente:</p>
+                <p>a) Proyectista: El profesional encargado por el promotor de la edificación para el diseño de la ICT, que dispone de la titulación establecida en el artículo 3 del Real Decreto-ley 1/1998, de 27 de febrero, sobre infraestructuras comunes en los edificios para el acceso a los servicios de telecomunicación. Se encargará de generar la consulta hacia los operadores, facilitando la información básica respecto a la situación y características fundamentales de la edificación que se pretende construir y de los tiempos estimados de comienzo y duración del proceso constructivo. Asimismo reflejará en el acta de replanteo la respuesta obtenida a su consulta y las consecuencias de ésta sobre el proyecto original de ICT. Por último, si procede, realizará las modificaciones oportunas en el proyecto técnico para adecuarlo a las respuestas recibidas.</p>
+                <p>b) Operadores con red: Operadores de telecomunicación que mediante diferentes tecnologías despliegan redes de telecomunicación hasta las edificaciones que, de forma voluntaria, se adhieren a la consulta e intercambio de información objeto del presente artículo.</p>
+                <p>3. La indicada orden del Ministro de Industria, Turismo y Comercio asimismo regulará la forma en que la Administración actuará como gestor del proceso de consulta e intercambio de información. También regulará la forma de normalizar y canalizar las consultas efectuadas por los proyectistas de la ICT hacia los diferentes operadores con red y las respuestas de estos hacia los correspondientes proyectistas, sin ningún otro tipo de intervención en el proceso. La canalización de las consultas y respuestas se efectuará mediante procedimientos electrónicos, simplificando así la tramitación y facilitando la necesaria comunicación entre proyectistas y operadores de telecomunicación pertinentes.</p>
+                <p>4. Con el fin de dotarlo con las mayores garantías de certeza posible, el intercambio de información o consulta deberá ser efectuado inmediatamente antes del momento de comienzo de las obras de ejecución de la edificación proyectada, haciéndolo coincidir con el proceso de replanteo de la obra. Su resultado deberá de reflejarse en la correspondiente acta de replanteo y, si procede, en función de las respuestas de los operadores, provocará que se realicen las modificaciones oportunas en el proyecto técnico, mediante el anexo correspondiente.</p>
+                <p>5. Los operadores de red involucrados en la consulta, dispondrán de un plazo máximo de 30 días a partir del momento en que se realiza la consulta para responder a la misma. Transcurrido dicho plazo sin recibir contestación, el proyectista procederá a proyectar la ICT de acuerdo con las disposiciones de este reglamento.</p>
+                <p>6. La participación de los operadores interesados en el proceso de consultas descrito en este reglamento será efectiva a partir de la firma de un convenio con la Administración en el que queden reflejados sus derechos y sus obligaciones, así como las consecuencias del incumplimiento del mismo. La falta de respuesta a la consulta por parte de alguno de los operadores de red, de forma reiterada y sin justificación, así como el incumplimiento de las obligaciones fijadas en el convenio, podrá concluir con la exclusión del mismo de la lista de operadores de red a consultar. Los diferentes casos serán contemplados y desarrollados en los convenios señalados.</p>
+                <p class="text-xs text-red-500 mt-2">Se declara la nulidad del inciso destacado en el apartado 2.a) por Sentencias del TS de 17 de octubre de 2012. Ref. BOE-A-2012-13773. y Ref. BOE-A-2012-13774.</p>
+
+                <div class="section-title mt-8 mb-4">Preguntas de Comprensión</div>
+                <div class="question-container">
+                    <div class="question-text" onclick="toggleAnswer(this)">¿Cuál es el objetivo principal de la consulta e intercambio de información entre proyectistas y operadores?</div>
+                    <div class="answer-text">Permitir que las ICT posibiliten una oferta amplia de servicios de telecomunicación en libre competencia y confirmar la ubicación idónea de la arqueta de entrada de la ICT.</div>
+                </div>
+                <div class="question-container">
+                    <div class="question-text" onclick="toggleAnswer(this)">¿Qué plazo tienen los operadores para responder a la consulta del proyectista?</div>
+                    <div class="answer-text">Disponen de un plazo máximo de 30 días.</div>
+                </div>
+            </section>
+
+            <section id="articulo9">
+                <h2 class="article-title">Artículo 9. Proyecto técnico.</h2>
+                <p>1. Con objeto de garantizar que las redes de telecomunicaciones en el interior de los edificios cumplan con las normas técnicas establecidas en este reglamento, aquéllas deberán contar con el correspondiente proyecto técnico. En el proyecto técnico se describirán, detalladamente, todos los elementos que componen la instalación y su ubicación y dimensiones, con mención de las normas que cumplen.</p>
+                <p>En el proyecto técnico original, se proyectarán y describirán la totalidad de las redes que pueden formar parte de la ICT, de acuerdo a la presencia de operadores que despliegan red en la ubicación de la futura edificación.</p>
+                <p>El proyecto técnico de ejecución tendrá en cuenta los resultados de la consulta e intercambio de información entre el proyectista de la ICT y los diferentes operadores de telecomunicación a que se refiere el artículo anterior. En el caso de que no existiera respuesta por parte de los operadores de telecomunicación, el proyecto técnico de ejecución incorporará tecnologías de acceso basadas en cables de fibra óptica en todas las poblaciones, y tecnologías de acceso basadas en cables coaxiales en aquellas poblaciones en las que estén presentes los operadores de cable en el momento de la entrada en vigor del presente reglamento.</p>
+                <p>El proyecto técnico de ejecución incluirá, al menos, los siguientes documentos:</p>
+                <p>a) Memoria: en ella se especificarán, como mínimo, los siguientes apartados: descripción de la edificación; descripción de los servicios que se incluyen en la infraestructura; previsiones de demanda; cálculos de niveles de señal en los distintos puntos de la instalación; elementos que componen la infraestructura. En su elaboración deberán tenerse en cuenta los resultados obtenidos tras la consulta e intercambio de información entre el proyectista de la ICT y los diferentes operadores de telecomunicación a que se refiere el artículo 8 de este reglamento, incluyendo la información necesaria para identificar de forma inequívoca la misma.</p>
+                <p>b) Planos: indicarán, al menos, los siguientes datos: esquemas de principio de la instalación; tipo, número, características y situación de los elementos de la infraestructura, canalizaciones de telecomunicación de la edificación; situación y ordenación de los recintos de instalaciones de telecomunicaciones; otras instalaciones previstas en la edificación que pudieran interferir o ser interferidas en su funcionamiento con la infraestructura; y detalles de ejecución de puntos singulares, cuando así se requiera por su índole.</p>
+                <p>c) Pliego de condiciones: se determinarán las calidades de los materiales y equipos y las condiciones de montaje.</p>
+                <p>d) Presupuesto: se especificará el número de unidades y precio de la unidad de cada una de las partes en que puedan descomponerse los trabajos, y deberán quedar definidas las características, modelos, tipos y dimensiones de cada uno de los elementos.</p>
+                <p>El proyecto técnico, firmado por el profesional encargado por el promotor de la edificación para el diseño de la ICT, que dispone de la titulación establecida en el artículo 3 del Real Decreto-ley 1/1998, de 27 de febrero, sobre infraestructuras comunes en los edificios para el acceso a los servicios de telecomunicación que, en su caso, actuará en coordinación con el autor del proyecto de edificación, debe ser verificado por una entidad que disponga de la independencia necesaria respecto al proceso de construcción de la edificación y de los medios y la capacitación técnica para ello.</p>
+                <p>Por orden del Ministro de Industria, Turismo y Comercio podrá aprobarse un modelo tipo de proyecto técnico que normalice los documentos que lo componen.</p>
+                <p>Un ejemplar de dicho proyecto técnico deberá obrar en poder de la propiedad, a cualquier efecto que proceda. Es obligación de la propiedad recibir, conservar y transmitir el proyecto técnico de la instalación efectuada. Otro ejemplar del proyecto verificado, habrá de presentarse electrónicamente por la propiedad a través del Registro electrónico del Ministerio de Industria, Turismo y Comercio a los efectos de que se pueda inspeccionar la instalación, cuando la autoridad competente lo considere oportuno.</p>
+                <p>2. Cuando la instalación requiera de una modificación sustancial del proyecto original, la propiedad deberá presentar electrónicamente el proyecto modificado correspondiente, que deberá reunir los mismos requisitos establecidos en el apartado anterior respecto del proyecto técnico. Cuando las modificaciones no produzcan un cambio sustancial del proyecto original, éstas se incorporarán como anexos al proyecto. De conformidad con lo dispuesto en el apartado anterior, la propiedad deberá conservar y transmitir el proyecto modificado.</p>
+                <p>3. Se presumirá que el proyecto técnico cumple con las determinaciones establecidas en este reglamento y demás normativa aplicable, cuando haya sido verificado por una entidad que cumpla los requisitos señalados en el apartado 1 del presente artículo, siempre y cuando dicha verificación se realice siguiendo los criterios básicos establecidos mediante orden del Ministerio de Industria, Turismo y Comercio.</p>
+                <p>Entre dichos criterios básicos se incluirán aquellos relativos a la comprobación documental que permita verificar que el proyecto tiene la estructura y contenidos mínimos normalizados, a la comprobación técnica que permita verificar que en la ICT proyectada se han definido todos los elementos considerados como mínimos imprescindibles por la reglamentación y se han realizado los cálculos necesarios para garantizar el correcto funcionamiento de la infraestructura proyectada y sobre cumplimiento de la normativa aplicable que permita constatar que en el diseño del proyecto se ha tenido en cuenta lo previsto en las distintas normativas aplicables: reglamentación de ICT, edificación, prevención de riesgos laborales, protección contra campos electromagnéticos, secreto de las comunicaciones, gestión de residuos y protección contra incendios, entre otras.</p>
+                <p>4. Las entidades de verificación señaladas en el punto anterior deberán demostrar y satisfacer de forma continuada los siguientes requisitos:</p>
+                <p>a) Disponer de la independencia necesaria respecto al proceso de construcción de la edificación, cuyos proyectos de ICT van a ser objeto de verificación. Para ello, la entidad no deberá estar directamente implicada en el proceso de construcción de la edificación ni representar a partes implicadas en el mismo. Asimismo, la entidad deberá estar libre de cualquier tipo de presión, coacción e incentivos, en especial de orden económico, que puedan influir sobre su opinión o los resultados de sus tareas.</p>
+                <p>b) Ser capaz de llevar a cabo todas las tareas del procedimiento de verificación, para lo cual, tendrá a su disposición el personal necesario y acceso a las instalaciones necesarias para llevar a cabo correctamente las tareas implicadas en su procedimiento de verificación. El personal deberá disponer de una adecuada formación técnica y profesional, conocimientos satisfactorios de las cuestiones relativas a las tareas que van a realizar y una experiencia adecuada para verificar correctamente la conformidad de los requisitos exigidos.</p>
+                <p>c) Disponer de un procedimiento de verificación que, al menos, incluya y cumpla los criterios básicos de verificación establecidos por el Ministerio de Industria, Turismo y Comercio.</p>
+                <p>d) Tener contratado un seguro de responsabilidad civil que cubra los posibles daños y responsabilidades derivados de la actividad de verificación de proyectos de ICT.</p>
+                <p>5. En virtud de lo dispuesto en el Real Decreto 1715/2010, de 17 de diciembre, por el que se designa a la Entidad Nacional de Acreditación (ENAC) como organismo nacional de acreditación de acuerdo con lo establecido en el Reglamento (CE) n.º 765/2008 del Parlamento Europeo y el Consejo, de 9 de julio de 2008, por el que se establecen los requisitos de acreditación y vigilancia del mercado relativos a la comercialización de los productos y por el que se deroga el Reglamento (CEE) n.º 339/93, la Secretaría de Estado de Telecomunicaciones y para la Sociedad de la Información aceptará que las entidades de verificación acreditadas por ENAC o por cualquiera de los organismos de acreditación de cualquier Estado miembro de la Unión Europea, siempre que dichos organismos se hayan sometido con éxito al sistema de evaluación por pares previsto en el Reglamento (CE) n.º 765/2008, de 9 de julio, del Parlamento Europeo y del Consejo, cumplen los requisitos antes señalados para verificar proyectos técnicos de infraestructuras comunes de telecomunicación en el interior de las edificaciones.</p>
+                <p>6. La entidad de verificación, una vez acreditada, deberá cumplir los requisitos y criterios que se establezcan mediante orden del titular del Ministerio de Industria, Turismo y Comercio que tendrán como objetivo facilitar la gestión y la tramitación, ante la Secretaría de Estado de Telecomunicaciones y para la Sociedad de la Información, de los proyectos técnicos verificados por dicha entidad.</p>
+                <p class="text-xs text-red-500 mt-2">Se declara la nulidad del inciso destacado del apartado 1, párrafo quinto por Sentencias del TS de 17 de octubre de 2012. Ref. BOE-A-2012-13773. y Ref. BOE-A-2012-13774.</p>
+                <p class="text-xs text-red-500">Se anula el inciso final destacado del apartado 1, párrafo quinto por Sentencia del TS de 9 de octubre de 2012. Ref. BOE-A-2012-13532.</p>
+
+                <div class="section-title mt-8 mb-4">Preguntas de Comprensión</div>
+                <div class="question-container">
+                    <div class="question-text" onclick="toggleAnswer(this)">¿Cuáles son los documentos mínimos que debe incluir el proyecto técnico de ejecución?</div>
+                    <div class="answer-text">Memoria, Planos, Pliego de condiciones y Presupuesto.</div>
+                </div>
+                <div class="question-container">
+                    <div class="question-text" onclick="toggleAnswer(this)">¿Qué debe hacer la propiedad si la instalación requiere una modificación sustancial del proyecto original?</div>
+                    <div class="answer-text">Debe presentar electrónicamente el proyecto modificado correspondiente, que debe reunir los mismos requisitos que el proyecto técnico original.</div>
+                </div>
+                <div class="question-container">
+                    <div class="question-text" onclick="toggleAnswer(this)">¿Qué requisitos debe cumplir una entidad de verificación de proyectos de ICT?</div>
+                    <div class="answer-text">Independencia del proceso de construcción, capacidad para llevar a cabo las tareas de verificación, un procedimiento de verificación que cumpla los criterios básicos, y un seguro de responsabilidad civil.</div>
+                </div>
+
+                <div class="section-title mt-8 mb-4">Caso Práctico</div>
+                <div class="case-study-container">
+                    <div class="case-study-title">Caso Práctico 3: Verificación de Proyecto</div>
+                    <p><strong>Situación:</strong> Un promotor ha encargado el proyecto técnico de la ICT para una nueva edificación. La entidad que debe verificar este proyecto también es parte del grupo empresarial que construye el edificio.</p>
+                    <p><strong>Pregunta:</strong> ¿Esta situación es conforme al reglamento?</p>
+                    <p><strong>Respuesta:</strong> No es conforme. El Artículo 9.4.a) establece que la entidad de verificación debe disponer de la independencia necesaria respecto al proceso de construcción de la edificación, no estando directamente implicada en él ni representando a partes implicadas.</p>
+                </div>
+            </section>
+
+            <section id="articulo10">
+                <h2 class="article-title">Artículo 10. Ejecución del proyecto técnico.</h2>
+                <p>1. En el momento del inicio de las obras, el promotor encargará al director de obra de la ICT, si existe, o en caso contrario a un profesional que dispone de la titulación establecida en el artículo 3 del Real Decreto-ley 1/1998, de 27 de febrero, sobre infraestructuras comunes en los edificios para el acceso a los servicios de telecomunicación, la redacción de un acta de replanteo del proyecto técnico de ICT, que será firmada entre aquél y el titular de la propiedad o su representación legal, donde figure una declaración expresa de validez del proyecto original o, si las circunstancias hubieren variado y fuere necesario la actualización de éste, la forma en que se va a acometer dicha actualización, bien como modificación del proyecto, si se trata de un cambio sustancial, o bien como anexo al proyecto original si los cambios fueren de menor entidad. Obligatoriamente, el acta de replanteo incluirá una referencia a los resultados de la consulta e intercambio de información entre el proyectista de la ICT y los diferentes operadores de telecomunicación a que se refiere el artículo 8 de este reglamento y, será presentada a la Administración electrónicamente, en el Registro electrónico del Ministerio de Industria, Turismo y Comercio, en un plazo no superior a 15 días naturales tras su redacción y firma.</p>
+                <p>2. Finalizados los trabajos de ejecución del proyecto técnico mencionado en el artículo anterior, la propiedad presentará electrónicamente, en el Registro electrónico del Ministerio de Industria, Turismo y Comercio, un boletín de instalación expedido por la empresa instaladora que haya realizado la instalación y un certificado, expedido por el director de obra, cuando exista, de que la instalación se ajusta al proyecto técnico, o bien un boletín de instalación, dependiendo de su complejidad. La forma y contenido del boletín de instalación y del certificado y los casos en que este sea exigible, en razón de la complejidad de la instalación, se establecerán por orden ministerial. Es obligación de la propiedad recibir, conservar y transmitir todos los documentos asociados a la instalación efectuada.</p>
+                <p>Asimismo, una vez finalizada la ejecución de la ICT, la propiedad hará entrega a los usuarios finales de las viviendas y locales comerciales de la edificación de una copia de un manual de usuario, donde se describa, de forma didáctica, las posibilidades y funcionalidades que les ofrece la infraestructura de telecomunicaciones, así como las recomendaciones en cuanto a uso y mantenimiento de la misma. Cada propietario tendrá la obligación de transferir esta información, convenientemente actualizada, en caso de venta o arrendamiento de la propiedad. Por orden del Ministro de Industria, Turismo y Comercio, podrá aprobarse un modelo tipo de manual de usuario que normalice su estructura y la información que debe contener. Tanto la recepción como la transmisión de la documentación asociada a la ICT se llevara a cabo mediante el Libro del Edificio a que se refieren, tanto la Ley 38/1999, de 5 de noviembre, de Ordenación de la Edificación, como en el Código Técnico de la Edificación aprobado mediante el Real Decreto 314/2006, de 17 de marzo.</p>
+                <p>A los efectos de este reglamento, se entiende por director de obra, cuando exista, al profesional encargado por el promotor de la edificación, que dispone de la titulación establecida en el artículo 3 del Real Decreto-ley 1/1998, de 27 de febrero, sobre infraestructuras comunes en los edificios para el acceso a los servicios de telecomunicación, que dirige el desarrollo de los trabajos de ejecución del proyecto técnico relativo a la infraestructura común de telecomunicaciones, que asume la responsabilidad de su ejecución conforme al proyecto técnico, y que puede introducir en su transcurso modificaciones en el proyecto original. En este caso, deberá actuar de acuerdo con lo dispuesto en el artículo 9.2. Los requisitos y obligaciones exigibles a los directores de obra serán establecidos por orden ministerial.</p>
+                <p>3. La Secretaría de Estado de Telecomunicaciones y para la Sociedad de la Información podrá realizar utilizando medios propios, o a través de auditorías o evaluaciones externas, las actuaciones de comprobación o de inspección necesarias para verificar el cumplimiento de los requisitos aplicables al proceso de ejecución de la infraestructura común de telecomunicaciones. Dichas comprobaciones podrán afectar tanto a la documentación exigida, como a la propia infraestructura realizada.</p>
+                <p>4. Cuando a petición de los constructores o promotores, para obtener la cédula de habitabilidad o licencia de primera ocupación, se solicite de la Secretaría de Estado para el Avance Digital la acreditación del cumplimiento de las obligaciones establecidas en este reglamento, dichas Jefaturas expedirán una certificación a los solos efectos de acreditar que por parte del promotor o constructor se ha presentado el correspondiente proyecto técnico que ampare la infraestructura, y el boletín de la instalación y, en su caso, el certificado que garanticen que ésta se ajusta al proyecto técnico.</p>
+                <p>Asimismo, cuando la Secretaría de Estado de Telecomunicaciones y para la Sociedad de la Información tenga conocimiento del incumplimiento de alguno de los requisitos que debe reunir el proyecto técnico, lo comunicará a la Administración autonómica o local correspondiente.</p>
+                <p>5. La comunidad de propietarios o el propietario de la edificación y la empresa instaladora, en su caso, tomarán las medidas necesarias para asegurar a aquellos que tengan instalaciones individuales su normal utilización durante la construcción de la nueva infraestructura, o la adaptación de la preexistente, en tanto éstas no se encuentren en perfecto estado de funcionamiento.</p>
+                <p class="text-xs text-red-500 mt-2">Se sustituyen las referencias a las Jefaturas Provinciales de Inspección de Telecomunicaciones por la Secretaría de Estado para el Avance Digital del apartado 4 por la disposición final 4.1 del Real Decreto 391/2019, de 21 de junio. Ref. BOE-A-2019-9513</p>
+                <p class="text-xs text-red-500">Se declara la nulidad del inciso destacado del apartado 1 y 2 por Sentencias del TS de 17 de octubre de 2012. Ref. BOE-A-2012-13773. y Ref. BOE-A-2012-13774.</p>
+
+                <div class="section-title mt-8 mb-4">Preguntas de Comprensión</div>
+                <div class="question-container">
+                    <div class="question-text" onclick="toggleAnswer(this)">¿Qué documento debe redactarse al inicio de las obras del proyecto técnico de ICT?</div>
+                    <div class="answer-text">Un acta de replanteo del proyecto técnico de ICT.</div>
+                </div>
+                <div class="question-container">
+                    <div class="question-text" onclick="toggleAnswer(this)">¿Qué documentos debe presentar la propiedad una vez finalizados los trabajos de ejecución del proyecto técnico?</div>
+                    <div class="answer-text">Un boletín de instalación expedido por la empresa instaladora y, si procede por complejidad, un certificado expedido por el director de obra que la instalación se ajusta al proyecto técnico.</div>
+                </div>
+                <div class="question-container">
+                    <div class="question-text" onclick="toggleAnswer(this)">¿Qué obligación tiene la propiedad con los usuarios finales una vez finalizada la ejecución de la ICT?</div>
+                    <div class="answer-text">Hacerles entrega de una copia de un manual de usuario donde se describan las posibilidades y funcionalidades de la infraestructura, así como recomendaciones de uso y mantenimiento.</div>
+                </div>
+            </section>
+
+            <section id="articulo11">
+                <h2 class="article-title">Artículo 11. Equipos y materiales utilizados para configurar las instalaciones.</h2>
+                <p>Tanto los equipos incluidos en el proyecto técnico de la instalación como los materiales empleados en su ejecución deberán ser conformes con las especificaciones técnicas incluidas en este reglamento y con el resto de normas en vigor que les sean de aplicación, especialmente las contenidas en el mencionado Código Técnico de la Edificación en materia de seguridad contra incendios y de resistencia frente al fuego.</p>
+
+                <div class="section-title mt-8 mb-4">Preguntas de Comprensión</div>
+                <div class="question-container">
+                    <div class="question-text" onclick="toggleAnswer(this)">¿Qué requisitos deben cumplir los equipos y materiales utilizados en las instalaciones de ICT?</div>
+                    <div class="answer-text">Deben ser conformes con las especificaciones técnicas del reglamento y otras normas en vigor, especialmente las del Código Técnico de la Edificación en seguridad contra incendios y resistencia al fuego.</div>
+                </div>
+            </section>
+
+            <section id="articulo12">
+                <h2 class="article-title">Artículo 12. Colaboración con la Administración.</h2>
+                <p>La Secretaría de Estado para el Avance Digital, del Ministerio de Industria, Turismo y Comercio, podrán, en cualquier momento, requerir la subsanación de las anomalías encontradas en cualquiera de los documentos relativos a la ICT presentados.</p>
+                <p>La comunidad de propietarios o, en su caso, el propietario de la edificación, la empresa instaladora, el proyectista y, en su caso, el director de obra responsable de las actuaciones sobre la infraestructura común de telecomunicaciones están obligados a colaborar con la Administración competente en materia de inspección, facilitando el acceso a las instalaciones y cuanta información sobre éstas les sea requerida.</p>
+                <p class="text-xs text-red-500 mt-2">Se modifica por la disposición final 4.1 del Real Decreto 391/2019, de 21 de junio. Ref. BOE-A-2019-9513</p>
+
+                <div class="section-title mt-8 mb-4">Preguntas de Comprensión</div>
+                <div class="question-container">
+                    <div class="question-text" onclick="toggleAnswer(this)">¿Quiénes están obligados a colaborar con la Administración en materia de inspección de la ICT?</div>
+                    <div class="answer-text">La comunidad de propietarios o el propietario, la empresa instaladora, el proyectista y, en su caso, el director de obra.</div>
+                </div>
+            </section>
+
+            <section id="articulo13">
+                <h2 class="article-title">Artículo 13. Conservación de la ICT e inspección técnica de las edificaciones.</h2>
+                <p>1. En relación con la conservación de las ICT en edificaciones construidas en régimen de propiedad horizontal y respecto a las obligaciones de las comunidades de propietarios, se aplicará lo previsto en el artículo 10 de la Ley 49/1960, de 21 de julio, sobre Propiedad Horizontal en cuanto al mantenimiento de los elementos, pertenencias y servicios comunes.</p>
+                <p>2. En cuanto a la conservación de las infraestructuras en edificios arrendados se aplicará el artículo 21 de la Ley 29/1994, de 24 de noviembre, de Arrendamientos Urbanos, salvo que la instalación se hubiere solicitado por los arrendatarios, en cuyo caso los gastos que se produzcan serán a cuenta de éstos.</p>
+                <p>3. Con objeto de facilitar las labores relacionadas con las inspecciones técnicas de las edificaciones en materia de infraestructuras e instalaciones de telecomunicaciones, el anexo IV de este reglamento incluye, con carácter orientativo, un protocolo de pruebas para evaluar el estado de operatividad de las citadas infraestructuras e instalaciones.</p>
+
+                <div class="section-title mt-8 mb-4">Preguntas de Comprensión</div>
+                <div class="question-container">
+                    <div class="question-text" onclick="toggleAnswer(this)">¿Qué norma regula la conservación de las ICT en régimen de propiedad horizontal?</div>
+                    <div class="answer-text">El artículo 10 de la Ley 49/1960, de 21 de julio, sobre Propiedad Horizontal.</div>
+                </div>
+                <div class="question-container">
+                    <div class="question-text" onclick="toggleAnswer(this)">¿Quién asume los gastos de conservación de la ICT en edificios arrendados si la instalación fue solicitada por los arrendatarios?</div>
+                    <div class="answer-text">Los gastos serán a cuenta de los arrendatarios.</div>
+                </div>
+            </section>
+
+            <section id="articulo14">
+                <h2 class="article-title">Artículo 14. Hogar digital.</h2>
+                <p>Con el fin de impulsar la implantación y desarrollo generalizado del concepto de «hogar digital», se incluye como anexo V de este reglamento una clasificación de las viviendas y edificaciones atendiendo a los equipamientos y tecnologías con las que se pretenda dotarlas. Dicha clasificación se aplicará a aquellas edificaciones en las que las viviendas, por decisión de su promotor, incorporen las funcionalidades de «hogar digital», a los efectos de que tanto promotores, como usuarios y administraciones públicas dispongan de un marco de referencia homogéneo, basado en parámetros objetivos, para clasificar y comparar las viviendas.</p>
+
+                <div class="section-title mt-8 mb-4">Preguntas de Comprensión</div>
+                <div class="question-container">
+                    <div class="question-text" onclick="toggleAnswer(this)">¿Qué se incluye en el reglamento para impulsar el concepto de "hogar digital"?</div>
+                    <div class="answer-text">Se incluye como anexo V una clasificación de las viviendas y edificaciones según los equipamientos y tecnologías para "hogar digital".</div>
+                </div>
+            </section>
+
+            <section id="articulo15">
+                <h2 class="article-title">Artículo 15. Régimen sancionador.</h2>
+                <p>El incumplimiento de las obligaciones que impone este reglamento y las normas técnicas que lo completan se sancionará de acuerdo con lo previsto en el artículo 11 del Real Decreto-ley 1/1998, de 27 de febrero, y en la Ley 32/2003, de 3 de noviembre, General de Telecomunicaciones.</p>
+
+                <div class="section-title mt-8 mb-4">Preguntas de Comprensión</div>
+                <div class="question-container">
+                    <div class="question-text" onclick="toggleAnswer(this)">¿Qué normativa se aplica para sancionar el incumplimiento de este reglamento?</div>
+                    <div class="answer-text">Se sancionará de acuerdo con lo previsto en el artículo 11 del Real Decreto-ley 1/1998, de 27 de febrero, y en la Ley 32/2003, de 3 de noviembre, General de Telecomunicaciones.</div>
+                </div>
+            </section>
+
+            <section id="autoevaluacion" class="mt-12">
+                <h2 class="section-title">Autoevaluación</h2>
+                <form id="quizForm">
+                    <div class="mb-6 p-4 bg-blue-50 rounded-lg shadow-sm">
+                        <p class="font-bold mb-2">1. Según el Artículo 4, ¿qué anexo especifica la normativa para la captación, adaptación y distribución de señales de radiodifusión sonora y televisión?</p>
+                        <div class="quiz-option" data-question="1" data-answer="a">a) Anexo I</div>
+                        <div class="quiz-option" data-question="1" data-answer="b">b) Anexo II</div>
+                        <div class="quiz-option" data-question="1" data-answer="c">c) Anexo III</div>
+                        <div class="quiz-option" data-question="1" data-answer="d">d) Anexo IV</div>
+                        <div class="quiz-feedback" id="feedback1"></div>
+                    </div>
+
+                    <div class="mb-6 p-4 bg-blue-50 rounded-lg shadow-sm">
+                        <p class="font-bold mb-2">2. De acuerdo con el Artículo 5, ¿cuánto tiempo tiene un operador para retirar su cableado una vez finalizado el contrato de abono?</p>
+                        <div class="quiz-option" data-question="2" data-answer="a">a) 15 días</div>
+                        <div class="quiz-option" data-question="2" data-answer="b">b) 30 días</div>
+                        <div class="quiz-option" data-question="2" data-answer="c">c) 60 días</div>
+                        <div class="quiz-option" data-question="2" data-answer="d">d) No hay un plazo específico</div>
+                        <div class="quiz-feedback" id="feedback2"></div>
+                    </div>
+
+                    <div class="mb-6 p-4 bg-blue-50 rounded-lg shadow-sm">
+                        <p class="font-bold mb-2">3. En el Artículo 9, ¿cuál de los siguientes NO es un documento mínimo que debe incluir el proyecto técnico de ejecución?</p>
+                        <div class="quiz-option" data-question="3" data-answer="a">a) Memoria</div>
+                        <div class="quiz-option" data-question="3" data-answer="b">b) Planos</div>
+                        <div class="quiz-option" data-question="3" data-answer="c">c) Informe de impacto ambiental</div>
+                        <div class="quiz-option" data-question="3" data-answer="d">d) Presupuesto</div>
+                        <div class="quiz-feedback" id="feedback3"></div>
+                    </div>
+
+                    <div class="mb-6 p-4 bg-blue-50 rounded-lg shadow-sm">
+                        <p class="font-bold mb-2">4. Según el Artículo 10, ¿qué documento debe presentarse electrónicamente a la Administración al inicio de las obras del proyecto técnico de ICT?</p>
+                        <div class="quiz-option" data-question="4" data-answer="a">a) El boletín de instalación</div>
+                        <div class="quiz-option" data-question="4" data-answer="b">b) El manual de usuario</div>
+                        <div class="quiz-option" data-question="4" data-answer="c">c) El acta de replanteo</div>
+                        <div class="quiz-option" data-question="4" data-answer="d">d) El certificado de fin de obra</div>
+                        <div class="quiz-feedback" id="feedback4"></div>
+                    </div>
+
+                    <div class="mb-6 p-4 bg-blue-50 rounded-lg shadow-sm">
+                        <p class="font-bold mb-2">5. ¿Qué norma se aplica a la conservación de las ICT en edificios arrendados, según el Artículo 13?</p>
+                        <div class="quiz-option" data-question="5" data-answer="a">a) Ley de Propiedad Horizontal</div>
+                        <div class="quiz-option" data-question="5" data-answer="b">b) Ley General de Telecomunicaciones</div>
+                        <div class="quiz-option" data-question="5" data-answer="c">c) Ley de Arrendamientos Urbanos</div>
+                        <div class="quiz-option" data-question="5" data-answer="d">d) Código Técnico de la Edificación</div>
+                        <div class="quiz-feedback" id="feedback5"></div>
+                    </div>
+
+                    <button type="button" onclick="submitQuiz()" class="nav-button bg-green-600 hover:bg-green-700 w-full">Evaluar</button>
+                    <div id="quizResult" class="quiz-result mt-4"></div>
+                    <button type="button" onclick="resetQuiz()" class="nav-button bg-gray-500 hover:bg-gray-600 mt-2 w-full">Reiniciar Cuestionario</button>
+                </form>
+            </section>
+        </div>
+    </div>
+
+    <script>
+        // Registra el Service Worker
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('/service-worker.js')
+                    .then(registration => {
+                        console.log('Service Worker registrado con éxito:', registration);
+                    })
+                    .catch(error => {
+                        console.error('Fallo en el registro del Service Worker:', error);
+                    });
+            });
+        }
+
+        // Función para alternar la visibilidad de las respuestas
+        function toggleAnswer(element) {
+            const answer = element.nextElementSibling;
+            if (answer.style.display === "block") {
+                answer.style.display = "none";
+            } else {
+                answer.style.display = "block";
+            }
+        }
+
+        // Respuestas correctas para el cuestionario
+        const correctAnswers = {
+            1: 'a',
+            2: 'b',
+            3: 'c',
+            4: 'c',
+            5: 'c'
+        };
+
+        const quizOptions = document.querySelectorAll('.quiz-option');
+        quizOptions.forEach(option => {
+            option.addEventListener('click', function() {
+                const questionNumber = this.dataset.question;
+                // Elimina la clase 'selected' de otras opciones de la misma pregunta
+                document.querySelectorAll(`.quiz-option[data-question="${questionNumber}"]`).forEach(opt => {
+                    opt.classList.remove('selected');
+                });
+                // Añade la clase 'selected' a la opción clicada
+                this.classList.add('selected');
+            });
+        });
+
+        function submitQuiz() {
+            let score = 0;
+            const totalQuestions = Object.keys(correctAnswers).length;
+            const quizResultDiv = document.getElementById('quizResult');
+
+            for (let i = 1; i <= totalQuestions; i++) {
+                const selectedOption = document.querySelector(`.quiz-option[data-question="${i}"].selected`);
+                const feedbackDiv = document.getElementById(`feedback${i}`);
+                feedbackDiv.style.display = 'block'; // Muestra el feedback
+
+                document.querySelectorAll(`.quiz-option[data-question="${i}"]`).forEach(opt => {
+                    opt.classList.remove('correct', 'incorrect', 'selected'); // Reinicia el estilo
+                    opt.style.pointerEvents = 'none'; // Deshabilita más clics
+                });
+
+                if (selectedOption) {
+                    const userAnswer = selectedOption.dataset.answer;
+                    if (userAnswer === correctAnswers[i]) {
+                        score++;
+                        selectedOption.classList.add('correct');
+                        feedbackDiv.textContent = '¡Correcto!';
+                        feedbackDiv.style.color = '#2e7d32'; // Texto verde
+                        feedbackDiv.style.borderColor = '#4caf50';
+                    } else {
+                        selectedOption.classList.add('incorrect');
+                        document.querySelector(`.quiz-option[data-question="${i}"][data-answer="${correctAnswers[i]}"]`).classList.add('correct'); // Resalta la correcta
+                        feedbackDiv.textContent = `Incorrecto. La respuesta correcta es la ${correctAnswers[i].toUpperCase()}.`;
+                        feedbackDiv.style.color = '#d32f2f'; // Texto rojo
+                        feedbackDiv.style.borderColor = '#f44336';
+                    }
+                } else {
+                    // No se seleccionó ninguna opción para esta pregunta
+                    document.querySelector(`.quiz-option[data-question="${i}"][data-answer="${correctAnswers[i]}"]`).classList.add('correct'); // Resalta la correcta
+                    feedbackDiv.textContent = `No respondiste. La respuesta correcta es la ${correctAnswers[i].toUpperCase()}.`;
+                    feedbackDiv.style.color = '#f57f17'; // Texto naranja para sin respuesta
+                    feedbackDiv.style.borderColor = '#ffeb3b';
+                }
+            }
+            quizResultDiv.textContent = `Obtuviste ${score} de ${totalQuestions} respuestas correctas.`;
+            quizResultDiv.style.color = score >= totalQuestions / 2 ? '#2e7d32' : '#d32f2f';
+        }
+
+        function resetQuiz() {
+            const quizResultDiv = document.getElementById('quizResult');
+            quizResultDiv.textContent = ''; // Limpia el resultado
+
+            quizOptions.forEach(option => {
+                option.classList.remove('selected', 'correct', 'incorrect');
+                option.style.pointerEvents = 'auto'; // Vuelve a habilitar los clics
+            });
+
+            document.querySelectorAll('.quiz-feedback').forEach(feedbackDiv => {
+                feedbackDiv.textContent = '';
+                feedbackDiv.style.display = 'none'; // Oculta el feedback
+            });
+        }
+    </script>
+</body>
+</html>
